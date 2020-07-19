@@ -21,7 +21,7 @@ class EmojiMemoryGame{
 			 return emojis[pairIndex]
 		})
 	}
-	
+
 	var cards: Array<MemoryGame<String>.Card>{
 		model.cards
 	}

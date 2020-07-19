@@ -22,12 +22,19 @@ struct MemoryGame<CardContent>{
 			cards.append(Card(content: content, id: pairIndex * 2))
 			cards.append(Card(content: content, id: pairIndex * 2 + 1))
 		}
+		for indexOf in (0..<cards.count).reversed(){
+			let index = Int.random(in: 0..<cards.count) % (indexOf + 1)
+			let temp = cards[indexOf]
+			cards[indexOf] = cards[index]
+			cards[index] = temp
+		}
+		
 	}
-	
+
 
 	
 	struct Card: Identifiable{
-		var isFaceUp: Bool = true
+		var isFaceUp: Bool = false
 		var isMatched: Bool = false
 		var content: CardContent
 		var id: Int
