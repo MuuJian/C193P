@@ -26,20 +26,24 @@ struct EmojiMemoryGameView: View {
 				CardView(card: card).onTapGesture {
 					self.viewModel.choose(card: card)
 				}
+				.padding()
 			}
 			.padding()
 			.foregroundColor(Color.orange)
     }
 }
 
+
 struct CardView: View {
 	var card: MemoryGame<String>.Card
+	
 	
 	var body: some View {
 		GeometryReader {geometry in
 			self.body(for: geometry.size)
 		}
 	}
+	
 	
 	func body(for size: CGSize) -> some View{
 		ZStack() {
@@ -55,16 +59,13 @@ struct CardView: View {
 			.font(Font.system(size: min(size.width, size.height) * 0.75))
 	}
 	
+	
 	// MARK: Drawing Constants
 	let cornerRadius: CGFloat = 10.0
 	let edgeLineWidth: CGFloat = 3
 	let fontScalaFactor: CGFloat = 0.75
 	
 }
-
-
-
-
 
 
 struct ContentView_Previews: PreviewProvider {
