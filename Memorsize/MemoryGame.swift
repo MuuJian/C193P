@@ -39,11 +39,20 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
 		}
 		*/
 		get{
-			let isfaceup = cards.indices.filter { index in cards[index].isFaceUp}.only
+			cards.indices.filter { index in cards[index].isFaceUp}.only
+			/*
+			let faceUpCardIndicse = cards.indices.filter { index in cards[index].isFaceUp}
+			if faceUpCardIndecse.count == 1{
+				return faceUpCardIndecse.first
+			}else{
+				return nil
+			}
+			*/
 		}
 		set{
 			for index in cards.indices{
-				cards[index].isFaceUp = index == newValue
+				cards[index].isFaceUp = index == newValue // newValue是set内建的参数
+				//选择点击的卡片翻转 其他掩盖
 			}
 		}
 	}
@@ -57,7 +66,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
 				}
 				self.cards[chosenIndex].isFaceUp = true
 			}else{
-				
 				indexOfTheOneAndOnlyFaceUpCard = chosenIndex
 			}
 		}
