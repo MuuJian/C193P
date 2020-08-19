@@ -68,15 +68,15 @@
 		B499DF9124C2F489008B031A /* Memorsize */ = {
 			isa = PBXGroup;
 			children = (
-				B499DF9224C2F489008B031A /* AppDelegate.swift */,
-				B499DF9424C2F489008B031A /* SceneDelegate.swift */,
+				B47FD39424C44F7C0040D988 /* MemoryGame.swift */,
 				B499DF9624C2F489008B031A /* EmojiMemoryGameView.swift */,
 				B47FD39624C454840040D988 /* EmojiMemoryModel.swift */,
-				B47FD39424C44F7C0040D988 /* MemoryGame.swift */,
 				B443CF1324D88C150072BDA6 /* Grid.swift */,
 				B484CC4324D966B00091324D /* GridLayout.swift */,
 				B484CC4724D9B9210091324D /* Array+Identifiable.swift */,
 				B484CC4924D9ED0C0091324D /* Array+Only.swift */,
+				B499DF9224C2F489008B031A /* AppDelegate.swift */,
+				B499DF9424C2F489008B031A /* SceneDelegate.swift */,
 				B499DF9824C2F48C008B031A /* Assets.xcassets */,
 				B499DF9D24C2F48C008B031A /* LaunchScreen.storyboard */,
 				B499DFA024C2F48C008B031A /* Info.plist */,

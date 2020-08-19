@@ -9,9 +9,26 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable{
-	var cards: Array<Card>
+	private(set) var cards: Array<Card>
 	
-	var indexOfTheOneAndOnlyFaceUpCard: Int?{
+	private var indexOfTheOneAndOnlyFaceUpCard: Int?{
+		get{
+			cards.indices.filter { index in cards[index].isFaceUp}.only
+			/*
+			let faceUpCardIndicse = cards.indices.filter { index in cards[index].isFaceUp}
+			if faceUpCardIndecse.count == 1{
+				return faceUpCardIndecse.first
+			}else{
+				return nil
+			}
+			*/
+		}
+		set{
+			for index in cards.indices{
+				cards[index].isFaceUp = index == newValue // newValue是set内建的参数
+				//选择点击的卡片翻转 其他掩盖
+			}
+		}
 		/*
 		get{
 			var faceUpCardIndices = [Int]()
@@ -38,23 +55,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
 			}
 		}
 		*/
-		get{
-			cards.indices.filter { index in cards[index].isFaceUp}.only
-			/*
-			let faceUpCardIndicse = cards.indices.filter { index in cards[index].isFaceUp}
-			if faceUpCardIndecse.count == 1{
-				return faceUpCardIndecse.first
-			}else{
-				return nil
-			}
-			*/
-		}
-		set{
-			for index in cards.indices{
-				cards[index].isFaceUp = index == newValue // newValue是set内建的参数
-				//选择点击的卡片翻转 其他掩盖
-			}
-		}
 	}
 	
 	mutating func choose(card: Card) {
@@ -79,14 +79,14 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
 			cards.append(Card(content: content, id: pairIndex * 2))
 			cards.append(Card(content: content, id: pairIndex * 2 + 1))
 		}
-		/*置乱
+		
 		for indexOf in (0..<cards.count).reversed(){
 			let index = Int.random(in: 0..<cards.count) % (indexOf + 1)
 			let temp = cards[indexOf]
 			cards[indexOf] = cards[index]
 			cards[index] = temp
 		}
-		*/
+		
 		
 	}
 
