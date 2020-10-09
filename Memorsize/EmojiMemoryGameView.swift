@@ -22,14 +22,27 @@ struct EmojiMemoryGameView: View {
 		})
 		*/
 		//lambda语法
-		Grid(viewModel.cards) { card in
-				CardView(card: card).onTapGesture {
-					self.viewModel.choose(card: card)
+		VStack{
+			Grid(viewModel.cards) { card in
+					CardView(card: card).onTapGesture {
+						withAnimation(.linear(duration: 0.75)){
+							self.viewModel.choose(card: card)
+						}
+					}
+					.padding()
 				}
 				.padding()
+				.foregroundColor(Color.orange)
+			Button {
+				//action:{}
+				withAnimation(.easeInOut){
+					self.viewModel.resetGame()
+				}
+			}label: {
+				Text("New Game")
 			}
-			.padding()
-			.foregroundColor(Color.orange)
+
+		}
     }
 }
 
@@ -52,9 +65,12 @@ struct CardView: View {
 					.padding(5).opacity(0.4)
 				Text(self.card.content)
 					.font(Font.system(size: min(size.width, size.height) * 0.75))
+					.rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+					.animation(card.isMatched ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default)
 			}
 			.cardify(isFaceUp: card.isFaceUp)
 			//.modifier(Cardify(isFaceUp: card.isFaceUp))
+			.transition(AnyTransition.scale)
 			}
 	}
 	
@@ -71,6 +87,9 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
 		let game = EmojiMemoryGame()
 		game.choose(card: game.cards[0])
-        return EmojiMemoryGameView(viewModel: game)
+		return Group {
+			EmojiMemoryGameView(viewModel: game)
+			EmojiMemoryGameView(viewModel: game)
+		}
     }
 }

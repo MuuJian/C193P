@@ -72,10 +72,10 @@
 		B499DF9124C2F489008B031A /* Memorsize */ = {
 			isa = PBXGroup;
 			children = (
-				B47FD39424C44F7C0040D988 /* MemoryGame.swift */,
 				B499DF9624C2F489008B031A /* EmojiMemoryGameView.swift */,
-				B403DC7024ED2BAB001A3130 /* Cardify.swift */,
 				B47FD39624C454840040D988 /* EmojiMemoryModel.swift */,
+				B47FD39424C44F7C0040D988 /* MemoryGame.swift */,
+				B403DC7024ED2BAB001A3130 /* Cardify.swift */,
 				B443CF1324D88C150072BDA6 /* Grid.swift */,
 				B484CC4324D966B00091324D /* GridLayout.swift */,
 				B484CC4724D9B9210091324D /* Array+Identifiable.swift */,
